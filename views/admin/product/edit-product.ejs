@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>ADMIN</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  <!-- Bootstrap CSS v5.2.1 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+</head>
+
+<body>
+  <header>
+    <!-- place navbar here -->
+    <%- include('../layout/styles.ejs') %>
+    <%- include('../layout/header.ejs') %>
+    <%- include('../layout/sidebar.ejs') %>
+  </header>
+  <main>
+    <section class="content">
+      <div class="content-wrapper">
+        <div class="col-12">
+          <div class="card card-primary">
+            <div class="card-header">
+              <div class="card-title">
+                <h1>CHỈNH SỬA SẢN PHẨM</h1>
+              </div>
+            </div>  
+            <div class="card-body">
+              <form action="/admin/products/update/<%= products.product_id %>" method="POST" enctype="multipart/form-data">
+                <div class="form-group">  
+                  <label>Mã SẢN PHẨM</label>
+                  <input type="text" id="id" name="id" class="form-control" placeholder="Mã Hàng Hóa Tự Tăng"
+                    disabled /><br />
+                </div>
+                <div class="form-group">
+                  <label>Tên Sản Phẩm</label>
+                  <input type="text" name="name" class="form-control" value="<%=products.name%>"/><br />
+                
+                </div>
+                <div class="form-group">
+                  <label>Đơn Giá</label>
+                  <input type="number" name="price" class="form-control"value="<%=products.price%>" /><br />
+                
+                </div>
+                <div class="form-group">
+                  <label>Hình Ảnh</label><br>
+                  <img src="/images/<%=products.image%>" width="100px">
+                  <input type="file" name="image" class="form-control" /><br />
+                  
+                </div>
+              
+
+                <div class="form-group">
+                  <label>Mô Tả</label>
+                  <input type="text" name="description" class="form-control"value="<%=products.description%>"  /><br />
+               
+                </div>
+                <div class="form-group">
+                  <label>Danh Mục Sản Phẩm</label>
+                  <select type="text" name="category_id" class="form-control" >
+                    <% categories.forEach(element => { %>
+                      <option value="<%= element.category_id%>"><%= element.name %> <%= element.category_id%></option>
+                    <% }) %>
+                  
+                  </select><br>
+                </div>
+                <div class="card-footer">
+                  <button type="submit" id="add-product" class="btn btn-primary">
+                    Thêm
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <!-- place footer here -->
+  </footer>
+  <!-- Bootstrap JavaScript Libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+    integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous">
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+    integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous">
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,121 @@
+
+<!--  -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  <!-- Bootstrap CSS v5.2.1 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+</head>
+
+<body>
+  <header>
+    <!-- place navbar here -->
+    <%- include('../layout/styles.ejs') %>
+        <%- include('../layout/header.ejs') %>
+        <%- include('../layout/sidebar.ejs') %>
+  </header>
+  <main>
+    <section class="content">
+      <div class="content-wrapper">
+        <div class="col-12">
+          <div class="card card-primary">
+            <div class="card-header">
+              <div class="card-title">
+                <h1>THÊM TÀI KHOẢN</h1>
+              </div>
+            </div>
+            <div class="card-body">
+              <form action="/admin/users/create" method="POST" >
+            
+                <div class="form-group">
+                  <label>Họ và tên</label>
+                  <input type="text" name="name" class="form-control" />
+                  <% if (typeof error_name !== 'undefined') { %>
+                    <span class="error-message" style="color: red">
+                      <%= error_name %>
+                    </span>
+                  <% } %>
+                </div><br>
+                 <div class="form-group">
+                  <label>Tên đăng nhập</label>
+                  <input type="text" name="username" class="form-control" />
+                  <% if (typeof error_username !== 'undefined') { %>
+                    <span class="error-message" style="color: red">
+                      <%= error_username %>
+                    </span>
+                  <% } %>
+                </div><br />
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="text" name="email" class="form-control" />
+                    <% if (typeof error_email !== 'undefined') { %>
+                      <span class="error-message" style="color: red">
+                        <%= error_email %>
+                      </span>
+                    <% } %>
+                  </div><br />
+                  <div class="form-group">
+                    <label>Mật Khẩu</label>
+                    <input type="password" name="password" class="form-control" />
+                  </div><br />
+                  <div class="form-group">
+                    <label>Nhập lại mật khẩu</label>
+                    <input type="password" name="confirmPassword" class="form-control" />
+                    <p id="error-Confirm" style="color: red"></p>
+                    <% if (typeof error_password !== 'undefined') { %>
+                      <span class="error-message" style="color: red">
+                        <%= error_password %>
+                      </span>
+                    <% }%>
+                    <% if (typeof error_confirmPassword !== typeof error_password) { %>
+                      <span class="error-message" style="color: red">
+                        <%= error_confirmPass %>
+                      </span>
+                    <% } %>
+                  
+                  </div><br />
+                  <div id="passwordError" style="display: none; color: red;"></div>
+                  <div class="form-group">
+                    <label>Role</label>
+                    <select name="role" class="form-control">
+                      <option value="0">Nhân Viên</option>
+                    </select><br />
+                    <p id="error-price" style="color: red"></p>
+                  </div>
+              
+                <div class="card-footer">
+                  <button type="submit" class="btn btn-primary">
+                    Thêm
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <!-- place footer here -->
+  </footer>
+  <!-- Bootstrap JavaScript Libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+    integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous">
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+    integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous">
+  </script>
+</body>
+
+</html>
+
+
+
+

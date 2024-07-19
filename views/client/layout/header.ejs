@@ -1,0 +1,118 @@
+  <%- include('./styles.ejs') %>
+  <!-- header -->
+  <div class="container-fluid">
+    <div class="row bg-secondary py-1 px-xl-5">
+        <div class="col-lg-6 d-none d-lg-block">
+        <div class="d-inline-flex align-items-center h-100">
+                <a class="text-body mr-3" href="">www.huytq.vn</a>
+            </div>
+        </div>
+        <div class="col-lg-6 text-center text-lg-right">
+            <div class="d-inline-flex align-items-center">
+                <% if (!user || !user.username) { %>
+                    <!-- Hiển thị các thẻ đăng nhập và đăng ký nếu không có session user hoặc username không tồn tại -->
+                    <div class="btn-group">
+                        <a href="/client/signup" style="text-decoration:none ; color: black;"> Đăng Kí</a>
+                        <p style="margin:0 10px 0 10px;">|</p>
+                        <a href="/client/login" style="text-decoration:none ;color: black;">Đăng Nhập</a>
+                       
+                </div>
+                <% } else { %>
+                    <!-- Ẩn đi các thẻ đăng nhập và đăng ký nếu có session user và username tồn tại -->
+                    <!-- Đây có thể là nơi hiển thị thông tin người dùng đã đăng nhập -->
+                    <div class="btn-group">
+                        <p>Xin chào, <%= user.username %>!</p>
+                        <p style="margin:0 10px 0 10px;">|</p>
+                        <a href="/client/logout"  style="text-decoration:none ;color: black;">Đăng xuất</a>
+                    </div>
+               
+                <% } %>
+               
+            </div>
+            <div class="d-inline-flex align-items-center d-block d-lg-none">
+                <a href="" class="btn px-0 ml-2">
+                    <i class="fas fa-heart text-dark"></i>
+                    <span class="badge text-dark border border-dark rounded-circle" style="padding-bottom: 2px;">5</span>
+                </a>
+                <a href="" class="btn px-0 ml-2">
+                    <i class="fas fa-shopping-cart text-dark"></i>
+                    <span class="badge text-dark border border-dark rounded-circle" style="padding-bottom: 2px;">0</span>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="row align-items-center bg-light py-3 px-xl-5 d-none d-lg-flex">
+        <div class="col-lg-4">
+            <a href="" class="text-decoration-none">
+        
+                <img src="/user/img/logo.png"alt="no photo" width="150px">
+            </a>
+        </div>
+        <div class="col-lg-4 col-8 text-center">
+            <form action="">
+                <h1>HUYTQ SHOP</h1>
+            </form>
+            
+        </div>
+        <div class="col-lg-4 col-6 text-right">
+            <p class="m-0">Tư Vấn & Chăm Sốc Khách Hàng</p>
+            <h5 class="m-0">+012 345 6789</h5>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid bg-dark mb-30" style="display: pos;">
+    <div class="row px-xl-5">
+        <div class="col-lg-3 d-none d-lg-block">
+            <a class="btn d-flex align-items-center justify-content-between bg-primary w-100" data-toggle="collapse" href="#navbar-vertical" style="height: 65px; padding: 0 30px;">
+                <h6 class="text-dark m-0"><i class="fa fa-bars mr-2"></i>Danh Mục Sản Phẩm</h6>
+                <i class="fa fa-angle-down text-dark"></i>
+            </a>
+            <nav class="collapse position-absolute navbar navbar-vertical navbar-light align-items-start p-0 bg-light" id="navbar-vertical" style="width: calc(100% - 30px); z-index: 999;">
+                <div class="navbar-nav w-100">
+             <% categories.forEach(element => { %>
+                <a href="/client/products/categories/<%=element.category_id%>" class="nav-item nav-link"><%=element.name%></a>
+             <% }) %>
+                </div>
+            </nav>
+        </div>
+        <div class="col-lg-9">
+            <nav class="navbar navbar-expand-lg  navbar-dark py-3 py-lg-0 px-0">
+                <a href="" class="text-decoration-none d-block d-lg-none">
+                    <span class="h1 text-uppercase text-dark bg-light px-2">Multi</span>
+                    <span class="h1 text-uppercase text-light bg-primary px-2 ml-n1">Shop</span>
+                </a>
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                    <div class="navbar-nav mr-auto py-0">
+                        <a href="/client" class="nav-item nav-link ">Trang Chủ</a>
+                        <a href="/client/products" class="nav-item nav-link">Sản Phẩm</a>
+                        <a href="#" class="nav-item nav-link">Chính Sách</a>
+                        <a href="/client/contact" class="nav-item nav-link">Liên Hệ</a>
+                    </div>
+                     <div class="col-lg-6 col-4 text-left" style="top: 10px; left: 10px; top:2px;">
+            <form action="" >
+                <div class="input-group  ">
+                    <input type="text" name="table_search" class="form-control" placeholder="Tìm Kiếm Sản Phẩm...">
+                    <div class="input-group-append bg-white rounded-0 border-0 m-0">
+                        <span class="input-group-text bg-transparent text-primary">
+                            <i class="fa fa-search"></i>
+                        </span>
+                    </div>
+                </div>
+            </form>
+        </div>
+                    <div class="navbar-nav ">
+                        <a href="/client/products/card" class="btn px-8 ml-3">
+                            <i class="fas fa-shopping-cart text-primary" style="font-size:25px;"></i>
+
+                        </a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+</div>
+<!-- header end -->
